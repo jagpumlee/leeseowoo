@@ -379,8 +379,24 @@ if st.session_state.page == "업로드":
         key="xlsx_uploader",
     )
 
+    # 업로더 아래 안내 문구
     st.markdown('<div class="uploader-title">엑셀 파일을 드래그하거나 클릭하세요</div>', unsafe_allow_html=True)
     st.markdown('<div class="uploader-sub">.xlsx 파일만 지원됩니다</div>', unsafe_allow_html=True)
+
+    # 📌 여기 추가
+    st.markdown(
+        """
+        <div class="uploader-sub" style="margin-top: 8px;">
+            <b>양식:</b><br>
+            남성참가자<br>
+            번호 / 이름 / 1지망 / 2지망 / 3지망<br>
+            (빈 행)<br>
+            여성참가자<br>
+            번호 / 이름 / 1지망 / 2지망 / 3지망<br>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
     if uploaded is not None:
         try:
@@ -496,5 +512,6 @@ if st.session_state.page == "결과":
         st.session_state.page = "업로드"
         st.session_state.result = None
         st.rerun()
+        
 
 
